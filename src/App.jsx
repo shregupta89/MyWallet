@@ -1,15 +1,20 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
 import './App.css'
+import { EthWallet } from './components/EthWallet'
+import { SolWallet } from './components/SolWallet'
+import GenMnemonics from './components/GenMnemonics'
+
+
 
 function App() {
  
 
   return (
   <>
-  hi there
-  
+  <GenMnemonics/>
+ 
+
   </>
   )
 }
