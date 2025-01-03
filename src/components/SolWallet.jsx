@@ -13,12 +13,13 @@ export function SolWallet({ mnemonic }) {
             const seed = mnemonicToSeed(mnemonic);
             const path = `m/44'/501'/${currentIndex}'/0'`;
             const derivedSeed = derivePath(path, seed.toString("hex")).key;
+            console.log(derivedSeed)
             const secret = nacl.sign.keyPair.fromSeed(derivedSeed).secretKey;
             const keypair = Keypair.fromSecretKey(secret);
             setCurrentIndex(currentIndex + 1);
             setPublicKeys([...publicKeys, keypair.publicKey]);
         }}>
-            Add wallet
+            Add Sol wallet
         </button>
         {publicKeys.map(p => <div>
             {p.toBase58()}

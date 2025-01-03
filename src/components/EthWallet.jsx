@@ -10,6 +10,7 @@ export const EthWallet = ({mnemonic}) => {
         <div>
             <button onClick={async function() {
                 const seed = await mnemonicToSeed(mnemonic);
+                console.log(seed)
                 const derivationPath = `m/44'/60'/${currentIndex}'/0'`;
                  const hdNode = HDNodeWallet.fromSeed(seed);
                  const child = hdNode.derivePath(derivationPath);
