@@ -1,30 +1,41 @@
-import { useState } from "react";
-import { mnemonicToSeed } from "bip39";
-import { Wallet, HDNodeWallet } from "ethers";
+import { mnemonicToSeed } from 'bip39'
+import { derivePath } from 'ed25519-hd-key'
+import { Wallet,HDNodeWallet } from 'ethers'
+import React from 'react'
+import { useState } from 'react'
 
-export const EthWallet = ({mnemonic}) => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [addresses, setAddresses] = useState([]);
+function EthWallet({mnemonics}) {
+    const [currIndex,setCurrIndex]=useState(0)
+    const [addresses,setAddresses]=useState([])
+    
+    let addEth=async ()=>{
+        const seed=await mnemonicToSeed(mnemonics)
+        console.log("seed:",seed)
+        const derivationPath= `m/44'/60'/${currIndex}'/0'`
+        console.log("derivationPath:",derivationPath)
+        const hdNode=HDNodeWallet.fromSeed(seed)
+        console.log("hdnode:",hdNode)
+        const child=hdNode.derivePath(derivationPath)
+        console.log("child:",child)
+        const privateKey=child.privateKey;
+        console.log("privateKey:",child)
+        const wallet=new Wallet(privateKey)
+        console.log(wallet)
+        setCurrIndex(currIndex+1)
+        setAddresses([...addresses,wallet.address])
+    }
+  return (
+    <div>
+        <button onClick={addEth}>
+            Add ETH Wallet</button>
+        {addresses.map((p,index) =>(
+            <div key={index}>{p}</div>
+        ))}
 
-    return (
-        <div>
-            <button onClick={async function() {
-                const seed = await mnemonicToSeed(mnemonic);
-                console.log(seed)
-                const derivationPath = `m/44'/60'/${currentIndex}'/0'`;
-                 const hdNode = HDNodeWallet.fromSeed(seed);
-                 const child = hdNode.derivePath(derivationPath);
-                 const privateKey = child.privateKey;
-                 const wallet = new Wallet(privateKey);
-                 setCurrentIndex(currentIndex + 1);
-                setAddresses([...addresses, wallet.address]);
-            }}>
-                Add ETH wallet
-            </button>
-
-            {addresses.map(p => <div>
-                Eth - {p}
-            </div>)}
-        </div>
-    )
+      
+    </div>
+  )
 }
+
+
+export default EthWallet

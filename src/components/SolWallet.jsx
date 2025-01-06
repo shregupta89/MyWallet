@@ -4,7 +4,7 @@ import { derivePath } from "ed25519-hd-key";
 import { Keypair } from "@solana/web3.js";
 import nacl from "tweetnacl"
 
-export function SolWallet({ mnemonic }) {
+ function SolWallet({ mnemonic }) {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [publicKeys, setPublicKeys] = useState([]);
 
@@ -26,3 +26,4 @@ export function SolWallet({ mnemonic }) {
         </div>)}
     </div>
 }
+export default SolWallet
