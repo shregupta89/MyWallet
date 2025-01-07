@@ -1,26 +1,33 @@
-// import React from 'react'
-// import {useState} from 'react'
-// import { generateMnemonic } from "bip39"
-// import { EthWallet } from './EthWallet'
-// import { SolWallet } from './SolWallet'
+import React from 'react'
+import {useState} from 'react'
+import EthWallet from './EthWallet'
+import  SolWallet  from './SolWallet'
+import { generateMnemonic } from 'bip39'
+import Button from './ui/Button'
 
-// const GenMnemonics = () => {
-//     const [mnemonic, setMnemonic] = useState("");
-//   return (
-//     <>
-//     <div>
-//         <input type="text" value={mnemonic}></input>
-//     <button onClick={async function() {
-//         const mn = await generateMnemonic();
-//         setMnemonic(mn)
-//         }}>
-//         Create Seed Phrase
-//     </button>
-//     </div>
-//     <EthWallet mnemonic={mnemonic}/>
-//     <SolWallet  mnemonic={mnemonic}/>
-//     </>
-//   )
-// }
+const GenMnemonics = ({walletType}) => {
+  const [mnemonics,setMnemonics]=useState()
 
-// export default GenMnemonics
+  return (
+    <>
+    <div className='flex flex-col'>
+    {/* <input type='text' value={mnemonics}></input> */}
+  <Button text="Generate Seed Phrase" onClick={
+    async function(){
+    let mn=generateMnemonic()
+    setMnemonics(mn)
+  }}/>
+  <br/>
+  {mnemonics}
+  {walletType === 'Ethereum' ? <EthWallet /> : 
+        walletType === 'Solana' ? <SolWallet /> : null}
+
+    </div>
+  
+
+
+    </>
+  )
+}
+
+export default GenMnemonics

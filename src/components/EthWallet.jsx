@@ -3,10 +3,13 @@ import { derivePath } from 'ed25519-hd-key'
 import { Wallet,HDNodeWallet } from 'ethers'
 import React from 'react'
 import { useState } from 'react'
+import Button from './ui/Button'
+import GenMnemonics from './GenMnemonics'
 
 function EthWallet({mnemonics}) {
     const [currIndex,setCurrIndex]=useState(0)
     const [addresses,setAddresses]=useState([])
+
     
     let addEth=async ()=>{
         const seed=await mnemonicToSeed(mnemonics)
@@ -26,8 +29,10 @@ function EthWallet({mnemonics}) {
     }
   return (
     <div>
-        <button onClick={addEth}>
-            Add ETH Wallet</button>
+       
+        <Button onClick={addEth}
+        text="Add ETH Wallet"/>
+         
         {addresses.map((p,index) =>(
             <div key={index}>{p}</div>
         ))}

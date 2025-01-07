@@ -1,31 +1,96 @@
-import { useState } from 'react'
-
-import './App.css'
-import  EthWallet from './components/EthWallet'
-import  SolWallet  from './components/SolWallet'
+// import { BrowserRouter } from 'react-router-dom'
+// import './App.css'
+// import { createBrowserRouter,RouterProvider } from 'react-router-dom'
+// import Home from './components/Home'
+// import EthWallet from './components/EthWallet'
+// import SolWallet from './components/SolWallet'
+// import MainLayout from './MainLayout'
 // import GenMnemonics from './components/GenMnemonics'
-import { generateMnemonic } from 'bip39'
+// const router=createBrowserRouter([
+//   {
+//     path:"/",
+//     element:<MainLayout/>,
+//     children:[
+//       {
+//         path:'',
+//         element:<Home/>
+//       },
+//       {
+//         path:"",
+//         element:<GenMnemonics/>,
+//         children:[
+//           {
+//             path:"Ethereum",
+//             element:<EthWallet/>
+//           },
+//           {
+//             path:"Solana",
+//             element:<SolWallet/>
+//           }
 
+//         ]
+//       },
+//       {
+//         path:"Solana",
+//         element:<SolWallet/>
+//       }
+//     ]
+//   }
+// ])
 
-
-function App() {
-  const [mnemonics,setMnemonics]=useState()
+// function App() {
+//   return (
+//     <div>
+//       <RouterProvider router={router}/>
+     
+//     </div>
  
 
+//   )
+// }
+
+// export default App
+
+
+
+
+import { BrowserRouter } from 'react-router-dom'
+import './App.css'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Home from './components/Home'
+import EthWallet from './components/EthWallet'
+import SolWallet from './components/SolWallet'
+import MainLayout from './MainLayout'
+import GenMnemonics from './components/GenMnemonics'
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout />,
+    children: [
+      {
+        path: '',
+        element: <Home />
+      },
+      {
+        path: "Ethereum",
+        element: <GenMnemonics walletType="Ethereum" />
+      },
+      {
+        path: "Solana",
+        element: <GenMnemonics walletType="Solana" />
+      }
+    ]
+  }
+])
+
+function App() {
   return (
-  <>
-  <input type='text' value={mnemonics}></input>
-  <button onClick={
-    async function(){
-    let mn=generateMnemonic()
-    setMnemonics(mn)
-  }}>Create seed phrase</button>
-
-  {mnemonics && <SolWallet mnemonics={mnemonics}/>}
-  {mnemonics && <EthWallet mnemonics={mnemonics}/>}
-
-  </>
+    <div>
+      <RouterProvider router={router} />
+    </div>
   )
 }
 
-export default App
+export default App;
+
