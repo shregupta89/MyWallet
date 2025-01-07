@@ -11,7 +11,7 @@ function EthWallet({mnemonics}) {
     const [addresses,setAddresses]=useState([])
 
     
-    let addEth=async ()=>{
+    let addEthW=async ()=>{
         const seed=await mnemonicToSeed(mnemonics)
         console.log("seed:",seed)
         const derivationPath= `m/44'/60'/${currIndex}'/0'`
@@ -30,9 +30,10 @@ function EthWallet({mnemonics}) {
   return (
     <div>
        
-        <Button onClick={addEth}
-        text="Add ETH Wallet"/>
-         
+        <Button onClick={addEthW}
+        text="Add ETH Wallet"
+        width='96px'/>
+       
         {addresses.map((p,index) =>(
             <div key={index}>{p}</div>
         ))}

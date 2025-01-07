@@ -23,8 +23,10 @@ import Button from "./ui/Button";
     return <div>
          
         <Button 
+        width='96px'
         text="Add Sol Wallet"
-        onClick={addSol}/>
+        onClick={addSol}
+        />
             
       
         {publicKeys.map(p => <div>

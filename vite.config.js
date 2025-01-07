@@ -6,5 +6,15 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), nodePolyfills()],
-})
+  plugins: [react(),nodePolyfills()],
+  optimizeDeps: {
+    include: [
+      '@mui/material',
+      '@mui/icons-material',
+      'react',
+      'react-dom',
+    ],
+  },
+});
+
+//

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import Accordion from '@mui/material/Accordion';
 import AccordionActions from '@mui/material/AccordionActions';
 import AccordionSummary from '@mui/material/AccordionSummary';
@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Button from '@mui/material/Button';
 
-export default function AccordionUsage() {
+function AccordionUsage() {
   return (
     <div>
       <Accordion>
@@ -56,3 +56,4 @@ export default function AccordionUsage() {
     </div>
   );
 }
+export default AccordionUsage
