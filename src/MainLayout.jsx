@@ -4,10 +4,10 @@ import { Outlet } from 'react-router-dom'
 import Footer from './components/FOoter'
 const MainLayout = () => {
   return (
-    <div className='w-screen h-screen bg-white text-black dark:bg-gray-800  dark:text-white'>
+    <div className='min-h-screen w-full bg-white text-black dark:bg-gray-800  dark:text-white flex flex-col'>
       <Navbar/>
 
-      <main>
+      <main  className='flex-grow'>
       <Outlet/>
       </main>
       

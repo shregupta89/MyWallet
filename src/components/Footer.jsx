@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
   return (
-    <div className='border-t fixed bottom-0 dark:border-gray-100/20 border-gray-400  w-full flex flex-col items-center'>
+    <div className='border-t  bottom-0 dark:border-gray-100/20 border-gray-400  w-full flex flex-col items-center'>
     <div>  
       Developed by <span className='font-medium'>Shreya Gupta</span>
     </div>
