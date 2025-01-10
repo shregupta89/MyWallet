@@ -53,7 +53,7 @@ function EthWallet({mnemonics}) {
                 />
             </div>
             
-            <div className='grid grid-cols-1 md:grid-cols-2 gap-4 w-full'>
+            <div className='grid grid-cols-1 lg:grid-cols-2 gap-4 w-full'>
                 {walletList?.map((item, index) => (
                     <div
                         key={index}
