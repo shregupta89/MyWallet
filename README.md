@@ -2,6 +2,7 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 <br>
+<br>
 It is an application which provides user the ability to generate public private keypairs from different networks.
 
 Currently, two official plugins are available:
